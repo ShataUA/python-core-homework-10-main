@@ -16,9 +16,9 @@ class Field:
 class Name(Field):
     """Name class"""
     def __init__(self, value):
-        super().__init__(value)
         if not value:
             raise ValueError("Give me a name")
+        super().__init__(value)
 
 
 class Phone(Field):
@@ -46,10 +46,10 @@ class Record:
 
     def edit_phone(self, old_phone, new_phone):
         """Edit phone"""
-        if old_phone in self.phones:
-            for index, phone in enumerate(self.phones):
-                if phone.value == old_phone:
-                    self.phones[index] = Phone(new_phone)
+        for index, phone in enumerate(self.phones):
+            if phone.value == old_phone:
+                self.phones[index] = Phone(new_phone)
+                return
         raise ValueError
 
     def find_phone(self, phone):
